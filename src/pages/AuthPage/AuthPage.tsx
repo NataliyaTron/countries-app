@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import "./style.scss";
 import { Button, Input } from "antd";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MainPage from "../MainPage/MainPage";
 
 const accessUser = {
@@ -12,7 +12,7 @@ const AuthPage = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
     const handleChangeLogin = (event: ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         setLogin(value);
@@ -25,15 +25,11 @@ const AuthPage = () => {
     const handleLoginButtonClick = (event: any) => {
         if (login === accessUser.login && password === accessUser.password) {
             console.log("Успешно!");
-            setLoggedIn(true);
+            navigate("/");
         } else {
             setErrorMessage("Неверный пользователь или пароль");
         }
     };
-
-    if (isLoggedIn) {
-        return <MainPage />;
-    }
 
     return (
         <div className={"auth"}>
