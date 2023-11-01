@@ -1,0 +1,22 @@
+.auth {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__inner {
+    width: 300px;
+    padding: 20px 24px;
+    border: 1px solid gainsboro;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  &__controls {
+  margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__submit {
+    margin-top: 16px;
+  }
+}
