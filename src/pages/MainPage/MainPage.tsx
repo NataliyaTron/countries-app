@@ -5,9 +5,11 @@ import Footer from "../../components/Footer/Footer";
 
 const MainPage = () => {
     const username = sessionStorage.getItem("username");
+    // Test review
     return (
         <div>
             <Header />
+
             {/*<Footer />*/}
         </div>
     );
