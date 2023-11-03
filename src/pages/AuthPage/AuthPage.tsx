@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState } from "react";
 import "./style.scss";
 import { Button, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import MainPage from "../MainPage/MainPage";
 
 const accessUser = {
     login: "Natasha",
@@ -22,10 +21,11 @@ const AuthPage = () => {
         const value = event.target.value;
         setPassword(value);
     };
-    const handleLoginButtonClick = (event: any) => {
+    const handleLoginButtonClick = () => {
         if (login === accessUser.login && password === accessUser.password) {
             console.log("Успешно!");
             navigate("/");
+            sessionStorage.setItem("username", login);
         } else {
             setErrorMessage("Неверный пользователь или пароль");
         }

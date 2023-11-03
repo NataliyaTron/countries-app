@@ -1,0 +1,33 @@
+.footer {
+  background-color: white;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+    &__contacts {
+      font-size: 14px;
+    }
+
+    &__social-list {
+      display: flex;
+      list-style-type: none;
+
+      &__social-item {
+        gap: 10px;
+
+        &__social-item img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+      &__address {
+        font-size: 14px;
+      }
+    }
+

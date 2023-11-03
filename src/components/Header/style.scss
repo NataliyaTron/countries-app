@@ -1,0 +1,21 @@
+.header {
+  background: white;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__logo img {
+    width: 260px;
+    height: 100px;
+  }
+  &__actions {
+    display: flex;
+    gap: 70px;
+    align-items: center;
+  }
+  &__info {
+    display: flex;
+    gap: 20px;
+  }
+}
