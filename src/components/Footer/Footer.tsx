@@ -16,7 +16,7 @@ const Footer = () => {
                         </li>
                         <li className="footer__social-item">
                             <img
-                                src="https://avatars.mds.yandex.net/i?id=6a5ff94911fa733b7cf7922fbb4d1510_sr-9865355-images-thumbs&n=13"
+                                src="https://shar23.ru/wp-content/uploads/2022/12/%D0%92%D0%9A.png"
                                 alt="Вконтакте"
                             />
                         </li>
