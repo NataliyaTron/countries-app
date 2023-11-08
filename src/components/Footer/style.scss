@@ -17,11 +17,11 @@
 
   &__social-list {
     display: flex;
+    gap: 10px;
     list-style-type: none;
   }
 
   &__social-item {
-    gap: 10px;
   }
 
   &__social-item img {
