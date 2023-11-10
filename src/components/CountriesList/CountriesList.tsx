@@ -26,7 +26,6 @@ const CountriesList = () => {
             {countries.map((item) => (
                 <Card
                     hoverable
-                    style={{ width: 240 }}
                     key={Math.random()}
                     cover={<img alt="example" src={item.img} />}
                 >

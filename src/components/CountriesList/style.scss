@@ -1,6 +1,9 @@
 .countries-list {
   display: flex;
-  flex: 1 0 auto;
   gap: 32px;
   flex-wrap: wrap;
+  & > .ant-card {
+    flex: 1 0 calc(20% - 32px);
+  }
 }
+

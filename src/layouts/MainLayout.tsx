@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 import "./style.scss";
 
 interface IMainLayoutProps extends PropsWithChildren {}
-const MainLayout: FC<IMainLayoutProps> = ({ children }) => {
+const MainLayout: FC<IMainLayoutProps> = () => {
     return (
         <div className={"wrapper"}>
             <Header />
