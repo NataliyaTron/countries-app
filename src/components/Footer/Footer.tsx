@@ -10,20 +10,21 @@ const Footer = () => {
                     <ul className="footer__social-list">
                         <li className="footer__social-item">
                             <img
-                                src="https://avatars.mds.yandex.net/i?id=e4f85eb57f6ab5ce6b4ed96cd1b25e8a_sr-4866546-images-thumbs&n=13"
-                                alt="Телеграм"
+                                src="https://www.svgrepo.com/show/452124/viber.svg"
+                                alt="Вайбер"
                             />
                         </li>
+
                         <li className="footer__social-item">
                             <img
-                                src="https://avatars.mds.yandex.net/i?id=6a5ff94911fa733b7cf7922fbb4d1510_sr-9865355-images-thumbs&n=13"
+                                src="https://www.svgrepo.com/show/349554/vk.svg"
                                 alt="Вконтакте"
                             />
                         </li>
                         <li className="footer__social-item">
                             <img
-                                src="https://avatars.mds.yandex.net/i?id=49c33c909b94fc99572662d81a4753fd_sr-8485393-images-thumbs&n=13"
-                                alt="Вайбер"
+                                src="https://www.svgrepo.com/show/452115/telegram.svg"
+                                alt="Телеграм"
                             />
                         </li>
                     </ul>

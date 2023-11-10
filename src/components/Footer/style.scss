@@ -3,31 +3,34 @@
   bottom: 0;
   width: 100%;
   padding: 20px 0;
+  flex: 0 0 auto;
 
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-    &__contacts {
+
+  &__contacts {
       font-size: 14px;
-    }
+  }
 
-    &__social-list {
-      display: flex;
-      list-style-type: none;
+  &__social-list {
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+  }
 
-      &__social-item {
-        gap: 10px;
+  &__social-item {
+  }
 
-        &__social-item img {
-          width: 30px;
-          height: 30px;
-        }
-      }
-    }
-      &__address {
-        font-size: 14px;
-      }
-    }
+  &__social-item img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__address {
+    font-size: 14px;
+  }
+}
 
