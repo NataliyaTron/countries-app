@@ -10,8 +10,8 @@ const Footer = () => {
                     <ul className="footer__social-list">
                         <li className="footer__social-item">
                             <img
-                                src="https://www.svgrepo.com/show/452124/viber.svg"
-                                alt="Вайбер"
+                                src="https://www.svgrepo.com/show/475689/twitter-color.svg"
+                                alt="Твиттер"
                             />
                         </li>
 

@@ -19,37 +19,29 @@ const Header = () => {
 
     return (
         <div className={"header"}>
-            <div className="container">
-                <div className="header__inner">
-                    <div className="header__logo">
-                        <img
-                            src="https://www.robotsscience.com/wp-content/uploads/2023/01/Photomath-Logo-scaled.jpg"
-                            alt="логотип"
-                        />
+            <div className="header__inner container">
+                <div className="header__logo">
+                    <img
+                        src="https://www.robotsscience.com/wp-content/uploads/2023/01/Photomath-Logo-scaled.jpg"
+                        alt="логотип"
+                    />
+                </div>
+                <div className="header__actions">
+                    <ul className="header__navigation">
+                        {links.map((link) => (
+                            <li key={Math.random()}>
+                                <NavLink to={link.href}>{link.title}</NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="header__info">
+                        <UserOutlined />
+                        Ваш логин - {username}
                     </div>
-                    <div className="header__actions">
-                        <ul className="header__navigation">
-                            {links.map((link) => (
-                                <li key={Math.random()}>
-                                    <NavLink to={link.href}>
-                                        {link.title}
-                                    </NavLink>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="header__info">
-                            <UserOutlined />
-                            Ваш логин - {username}
-                        </div>
-                        <div className="header__exit">
-                            <Button
-                                type="primary"
-                                danger
-                                onClick={handleLogout}
-                            >
-                                Выход
-                            </Button>
-                        </div>
+                    <div className="header__exit">
+                        <Button type="primary" danger onClick={handleLogout}>
+                            Выход
+                        </Button>
                     </div>
                 </div>
             </div>
