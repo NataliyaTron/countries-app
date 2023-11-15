@@ -10,11 +10,11 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 const AppRouter = () => {
     const router = createBrowserRouter([
         {
-            path: "/auth",
+            path: `/${routes.AUTH}`,
             element: <AuthPage />,
         },
         {
-            path: "/",
+            path: routes.MAIN,
             element: (
                 <ProtectedPage>
                     <MainLayout />
@@ -22,7 +22,7 @@ const AppRouter = () => {
             ),
             children: [
                 {
-                    path: "favourites",
+                    path: routes.FAVOURITE,
                     element: <FavouritesPage />,
                 },
                 {
