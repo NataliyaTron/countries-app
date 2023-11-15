@@ -5,7 +5,8 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import MainLayout from "./layouts/MainLayout";
 import ProtectedPage from "./components/ProtectedPage/ProtectedPage";
 import FavouritesPage from "./pages/FavouritesPage/FavouritesPage";
-import { routes } from "./consts/routes";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+
 const AppRouter = () => {
     const router = createBrowserRouter([
         {
@@ -29,6 +30,10 @@ const AppRouter = () => {
                     element: <MainPage />,
                 },
             ],
+        },
+        {
+            path: "*",
+            element: <NotFoundPage />,
         },
     ]);
     return <RouterProvider router={router} />;
