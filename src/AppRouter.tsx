@@ -5,8 +5,9 @@ import AuthPage from "./pages/AuthPage/AuthPage";
 import MainLayout from "./layouts/MainLayout";
 import ProtectedPage from "./components/ProtectedPage/ProtectedPage";
 import FavouritesPage from "./pages/FavouritesPage/FavouritesPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { routes } from "./consts/routes";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import DateTimePage from "./pages/DateTimePage/DateTimePage";
 
 const AppRouter = () => {
     const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const AppRouter = () => {
                     index: true,
                     element: <MainPage />,
                 },
+                { path: routes.TIME, element: <DateTimePage /> },
             ],
         },
         {
