@@ -15,6 +15,7 @@ const Header = () => {
     const links = [
         { href: routes.MAIN, title: "Главная" },
         { href: routes.FAVOURITE, title: "Избранное" },
+        { href: routes.TIME, title: "Время и дата" },
     ];
 
     return (
