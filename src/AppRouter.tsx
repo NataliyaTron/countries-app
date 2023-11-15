@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import ProtectedPage from "./components/ProtectedPage/ProtectedPage";
 import FavouritesPage from "./pages/FavouritesPage/FavouritesPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import { routes } from "./consts/routes";
 
 const AppRouter = () => {
     const router = createBrowserRouter([
