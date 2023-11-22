@@ -7,4 +7,8 @@
   &__like-icon {
     fill: red;
   }
+
+  &__like-icon.liked path {
+    fill: red;
+  }
 }
