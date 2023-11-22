@@ -13,41 +13,42 @@ interface ICountryCardProps {
 const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
     const [isLiked, setIsLiked] = useState(false);
 
+    // Отработает только при первом рендере
     useEffect(() => {
-        // Проверка, была ли страна добавлена в избранное
         const likedCountries = JSON.parse(
             sessionStorage.getItem("likedCountries") || "[]"
         );
-        if (likedCountries.includes(title)) {
+
+        if (Array.isArray(likedCountries) && likedCountries.includes(title)) {
             setIsLiked(true);
         }
-    }, [title]);
+    }, []);
 
     const handleLike = () => {
-        // Получить массив избранных стран из сессионного хранилища
         const likedCountries = JSON.parse(
             sessionStorage.getItem("likedCountries") || "[]"
         );
 
-        // Добавить или удалить страну из массива в зависимости от статуса "нравится"
-        if (isLiked) {
-            const updatedLikedCountries = likedCountries.filter(
-                (country: string) => country !== title
-            );
+        if (!Array.isArray(likedCountries)) return;
+        if (likedCountries.includes(title)) {
+            setIsLiked(false);
+            const newLikedCountries = likedCountries.filter((country) => {
+                return country !== title;
+            });
             sessionStorage.setItem(
                 "likedCountries",
-                JSON.stringify(updatedLikedCountries)
-            );
-        } else {
-            const updatedLikedCountries = [...likedCountries, title];
-            sessionStorage.setItem(
-                "likedCountries",
-                JSON.stringify(updatedLikedCountries)
+                JSON.stringify(newLikedCountries)
             );
         }
 
-        // Обновить статус "нравится" в компоненте
-        setIsLiked(!isLiked);
+        if (!likedCountries.includes(title)) {
+            setIsLiked(true);
+            const newLikedCountries = [...likedCountries, title];
+            sessionStorage.setItem(
+                "likedCountries",
+                JSON.stringify(newLikedCountries)
+            );
+        }
     };
 
     return (
