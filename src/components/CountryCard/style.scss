@@ -1,0 +1,10 @@
+.country-card {
+  &__like-wrapper {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__like-icon {
+    fill: red;
+  }
+}
