@@ -3,4 +3,5 @@ export const routes = {
     FAVOURITE: "favourite",
     AUTH: "auth",
     TIME: "time",
+    COUNTER: "counter",
 };

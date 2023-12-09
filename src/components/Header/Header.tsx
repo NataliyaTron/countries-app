@@ -16,6 +16,7 @@ const Header = () => {
         { href: routes.MAIN, title: "Главная" },
         { href: routes.FAVOURITE, title: "Избранное" },
         { href: routes.TIME, title: "Дата и время" },
+        { href: routes.COUNTER, title: "Счетчик" },
     ];
 
     return (

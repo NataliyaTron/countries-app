@@ -27,11 +27,15 @@
     display: flex;
     gap: 15px;
 
+    li a {
+      font-size: 22px;
+    }
+
     li:hover {
       color: #cf0000;
     }
 
-    a .active {
+    li .active {
       color: #111ea9;
       font-weight: 600;
     }

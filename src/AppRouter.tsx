@@ -8,6 +8,7 @@ import FavouritesPage from "./pages/FavouritesPage/FavouritesPage";
 import { routes } from "./consts/routes";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import DateTimePage from "./pages/DateTimePage/DateTimePage";
+import CounterPage from "./pages/CounterPage/CounterPage";
 
 const AppRouter = () => {
     const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const AppRouter = () => {
                     element: <MainPage />,
                 },
                 { path: routes.TIME, element: <DateTimePage /> },
+                { path: routes.COUNTER, element: <CounterPage /> },
             ],
         },
         {
