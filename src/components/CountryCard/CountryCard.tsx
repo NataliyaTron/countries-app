@@ -1,8 +1,11 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import Meta from "antd/es/card/Meta";
 import { HeartFilled } from "@ant-design/icons";
 import { Card } from "antd";
 import "./style.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../toolkitRedux/store";
+import { decrementLikes, incrementLikes } from "../../toolkitRedux/likeSlice";
 
 interface ICountryCardProps {
     img: string;
@@ -11,43 +14,16 @@ interface ICountryCardProps {
 }
 
 const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
-    const [isLiked, setIsLiked] = useState(false);
-
-    // Отработает только при первом рендере
-    useEffect(() => {
-        const likedCountries = JSON.parse(
-            sessionStorage.getItem("likedCountries") || "[]"
-        );
-
-        if (Array.isArray(likedCountries) && likedCountries.includes(title)) {
-            setIsLiked(true);
-        }
-    }, []);
+    const likes = useSelector((state: RootState) => state.likes);
+    const isLiked = likes.includes(title);
+    //const isLiked = useSelector((state: RootState) => state.likes);
+    const dispatch = useDispatch();
 
     const handleLike = () => {
-        const likedCountries = JSON.parse(
-            sessionStorage.getItem("likedCountries") || "[]"
-        );
-
-        if (!Array.isArray(likedCountries)) return;
-        if (likedCountries.includes(title)) {
-            setIsLiked(false);
-            const newLikedCountries = likedCountries.filter((country) => {
-                return country !== title;
-            });
-            sessionStorage.setItem(
-                "likedCountries",
-                JSON.stringify(newLikedCountries)
-            );
-        }
-
-        if (!likedCountries.includes(title)) {
-            setIsLiked(true);
-            const newLikedCountries = [...likedCountries, title];
-            sessionStorage.setItem(
-                "likedCountries",
-                JSON.stringify(newLikedCountries)
-            );
+        if (isLiked) {
+            dispatch(decrementLikes());
+        } else {
+            dispatch(incrementLikes());
         }
     };
 
