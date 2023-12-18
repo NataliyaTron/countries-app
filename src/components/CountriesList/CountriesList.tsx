@@ -1,8 +1,5 @@
 import React from "react";
-import { Card } from "antd";
-import Meta from "antd/es/card/Meta";
 import "./style.scss";
-import { HeartFilled } from "@ant-design/icons";
 import CountryCard from "../CountryCard/CountryCard";
 
 const CountriesList = () => {
