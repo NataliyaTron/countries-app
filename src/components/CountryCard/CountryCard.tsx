@@ -5,7 +5,10 @@ import { Card } from "antd";
 import "./style.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../toolkitRedux/store";
-import { addCountryToLikedCountries } from "../../toolkitRedux/likesSlice";
+import {
+    addCountryToLikedCountries,
+    removeCountryFromLikedCountries,
+} from "../../toolkitRedux/likesSlice";
 
 interface ICountryCardProps {
     img: string;
@@ -21,7 +24,11 @@ const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
     );
     const isLiked = likedCountries.includes(title);
     const handleLike = () => {
-        dispatch(addCountryToLikedCountries(title));
+        if (isLiked) {
+            dispatch(removeCountryFromLikedCountries(title));
+        } else {
+            dispatch(addCountryToLikedCountries(title));
+        }
     };
 
     return (

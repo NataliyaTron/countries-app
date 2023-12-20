@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface LikesState {
     likes: string[];
@@ -16,8 +15,14 @@ export const likesSlice = createSlice({
         addCountryToLikedCountries: (state, action) => {
             state.likes.push(action.payload);
         },
+        removeCountryFromLikedCountries: (state, action) => {
+            state.likes = state.likes.filter(
+                (country) => country !== action.payload
+            );
+        },
     },
 });
 
-export const { addCountryToLikedCountries } = likesSlice.actions;
+export const { addCountryToLikedCountries, removeCountryFromLikedCountries } =
+    likesSlice.actions;
 export default likesSlice.reducer;
