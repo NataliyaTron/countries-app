@@ -4,11 +4,7 @@
     justify-content: end;
   }
 
-  &__like-icon {
-    fill: red;
+  &__like-icon path {
+      fill: red;
+    }
   }
-
-  &__like-icon.liked path {
-    fill: red;
-  }
-}

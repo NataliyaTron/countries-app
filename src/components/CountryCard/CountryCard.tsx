@@ -1,8 +1,14 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import Meta from "antd/es/card/Meta";
 import { HeartFilled } from "@ant-design/icons";
 import { Card } from "antd";
 import "./style.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../toolkitRedux/store";
+import {
+    addCountryToLikedCountries,
+    removeCountryFromLikedCountries,
+} from "../../toolkitRedux/likesSlice";
 
 interface ICountryCardProps {
     img: string;
@@ -11,43 +17,17 @@ interface ICountryCardProps {
 }
 
 const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
-    const [isLiked, setIsLiked] = useState(false);
+    const dispatch = useDispatch();
 
-    // Отработает только при первом рендере
-    useEffect(() => {
-        const likedCountries = JSON.parse(
-            sessionStorage.getItem("likedCountries") || "[]"
-        );
-
-        if (Array.isArray(likedCountries) && likedCountries.includes(title)) {
-            setIsLiked(true);
-        }
-    }, []);
-
+    const likedCountries = useSelector(
+        (state: RootState) => state.likedCountries.likes
+    );
+    const isLiked = likedCountries.includes(title);
     const handleLike = () => {
-        const likedCountries = JSON.parse(
-            sessionStorage.getItem("likedCountries") || "[]"
-        );
-
-        if (!Array.isArray(likedCountries)) return;
-        if (likedCountries.includes(title)) {
-            setIsLiked(false);
-            const newLikedCountries = likedCountries.filter((country) => {
-                return country !== title;
-            });
-            sessionStorage.setItem(
-                "likedCountries",
-                JSON.stringify(newLikedCountries)
-            );
-        }
-
-        if (!likedCountries.includes(title)) {
-            setIsLiked(true);
-            const newLikedCountries = [...likedCountries, title];
-            sessionStorage.setItem(
-                "likedCountries",
-                JSON.stringify(newLikedCountries)
-            );
+        if (isLiked) {
+            dispatch(removeCountryFromLikedCountries(title));
+        } else {
+            dispatch(addCountryToLikedCountries(title));
         }
     };
 
@@ -61,11 +41,7 @@ const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
             <Meta title={title} description={link} />
             <div className={"country-card__like-wrapper"}>
                 <HeartFilled
-                    className={
-                        isLiked
-                            ? "country-card__like-icon liked"
-                            : "country-card__like-icon"
-                    }
+                    className={isLiked ? "country-card__like-icon" : ""}
                     onClick={handleLike}
                 />
             </div>
