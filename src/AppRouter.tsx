@@ -11,36 +11,46 @@ import DateTimePage from "./pages/DateTimePage/DateTimePage";
 import CounterPage from "./pages/CounterPage/CounterPage";
 
 const AppRouter = () => {
-    const router = createBrowserRouter([
-        {
-            path: `/${routes.AUTH}`,
-            element: <AuthPage />,
-        },
-        {
-            path: routes.MAIN,
-            element: (
-                <ProtectedPage>
-                    <MainLayout />
-                </ProtectedPage>
-            ),
-            children: [
-                {
-                    path: routes.FAVOURITE,
-                    element: <FavouritesPage />,
-                },
-                {
-                    index: true,
-                    element: <MainPage />,
-                },
-                { path: routes.TIME, element: <DateTimePage /> },
-                { path: routes.COUNTER, element: <CounterPage /> },
-            ],
-        },
-        {
-            path: "*",
-            element: <NotFoundPage />,
-        },
-    ]);
+    const router = createBrowserRouter(
+        [
+            {
+                path: `/${routes.AUTH}`,
+                element: <AuthPage />,
+            },
+            {
+                path: "/",
+                element: (
+                    <ProtectedPage>
+                        <MainLayout />
+                    </ProtectedPage>
+                ),
+                children: [
+                    {
+                        path: routes.FAVOURITE,
+                        element: <FavouritesPage />,
+                    },
+                    {
+                        path: routes.TIME,
+                        element: <DateTimePage />,
+                    },
+                    {
+                        path: routes.COUNTER,
+                        element: <CounterPage />,
+                    },
+                    {
+                        index: true,
+                        element: <MainPage />,
+                    },
+                ],
+            },
+            {
+                path: "*",
+                element: <NotFoundPage />,
+            },
+        ],
+        { basename: "/countries-app" }
+    );
+
     return <RouterProvider router={router} />;
 };
 
