@@ -1,34 +1,33 @@
 import React from "react";
 import "./style.scss";
 import CountryCard from "../CountryCard/CountryCard";
+import { useFetchAllCountriesQuery } from "../../services/CountryService";
+
+interface Country {
+    img: string;
+    title: string;
+    link: string;
+}
 
 const CountriesList = () => {
-    const countries = [
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "Russia",
-            link: "www.instagram.com",
-        },
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "USA",
-            link: "www.facebook.com",
-        },
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "China",
-            link: "www.youtube.com",
-        },
-    ];
+    const { data: countries, error, isLoading } = useFetchAllCountriesQuery(5);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
         <div>
             <div className="countries-list">
-                {countries.map((item, index) => (
+                {countries.map((country: Country, index: number) => (
                     <CountryCard
                         key={index}
-                        img={item.img}
-                        title={item.title}
-                        link={item.link}
+                        img={country.img}
+                        title={country.title}
+                        link={country.link}
                     />
                 ))}
             </div>
