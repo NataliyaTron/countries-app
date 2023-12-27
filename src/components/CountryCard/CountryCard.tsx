@@ -10,10 +10,14 @@ import {
     removeCountryFromLikedCountries,
 } from "../../toolkitRedux/likesSlice";
 
-interface ICountryCardProps {
+export interface ICountryCardProps {
     img: string;
     title: string;
     link: string;
+}
+
+export interface ICountry {
+    id: number;
 }
 
 const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
