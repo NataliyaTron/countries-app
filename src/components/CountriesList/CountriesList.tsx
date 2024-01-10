@@ -1,34 +1,44 @@
 import React from "react";
 import "./style.scss";
 import CountryCard from "../CountryCard/CountryCard";
+import { useFetchAllCountriesQuery } from "../../services/CountryService";
+
+interface Country {
+    flag: string;
+    name: string;
+    population: number;
+    area: number;
+    currencies: string;
+    capital: string;
+}
 
 const CountriesList = () => {
-    const countries = [
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "Russia",
-            link: "www.instagram.com",
-        },
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "USA",
-            link: "www.facebook.com",
-        },
-        {
-            img: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-            title: "China",
-            link: "www.youtube.com",
-        },
-    ];
+    const {
+        data: countries = [],
+        error,
+        isLoading,
+    } = useFetchAllCountriesQuery();
+    console.log(countries.map((country: any) => country.name.common));
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {JSON.stringify(error, null, 2)}</div>;
+    }
+
     return (
         <div>
             <div className="countries-list">
-                {countries.map((item, index) => (
+                {countries.map((country: Country, index: number) => (
                     <CountryCard
                         key={index}
-                        img={item.img}
-                        title={item.title}
-                        link={item.link}
+                        flag={country.flag}
+                        name={country.name}
+                        population={country.population}
+                        area={country.area}
+                        currencies={country.currencies}
+                        capital={country.capital}
                     />
                 ))}
             </div>

@@ -10,24 +10,38 @@ import {
     removeCountryFromLikedCountries,
 } from "../../toolkitRedux/likesSlice";
 
-interface ICountryCardProps {
-    img: string;
-    title: string;
-    link: string;
+export interface ICountryCardProps {
+    flag: string;
+    name: string;
+    population: number;
+    area: number;
+    currencies: string;
+    capital: string;
 }
 
-const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
+export interface ICountry {
+    id: number;
+}
+
+const CountryCard: FC<ICountryCardProps> = ({
+    flag,
+    name,
+    population,
+    area,
+    currencies,
+    capital,
+}) => {
     const dispatch = useDispatch();
 
     const likedCountries = useSelector(
         (state: RootState) => state.likedCountries.likes
     );
-    const isLiked = likedCountries.includes(title);
+    const isLiked = likedCountries.includes(name);
     const handleLike = () => {
         if (isLiked) {
-            dispatch(removeCountryFromLikedCountries(title));
+            dispatch(removeCountryFromLikedCountries(name));
         } else {
-            dispatch(addCountryToLikedCountries(title));
+            dispatch(addCountryToLikedCountries(name));
         }
     };
 
@@ -36,9 +50,13 @@ const CountryCard: FC<ICountryCardProps> = ({ img, title, link }) => {
             className={"country-card"}
             hoverable
             key={Math.random()}
-            cover={<img alt="example" src={img} />}
+            cover={<img alt={`Flag of ${name}`} src={flag} />}
         >
-            <Meta title={title} description={link} />
+            <h2>{name}</h2>
+            <p>Population: {population}</p>
+            <p>Area: {area} sq. km</p>
+            <p>Currencies: {currencies}</p>
+            <p>Capital: {capital}</p>
             <div className={"country-card__like-wrapper"}>
                 <HeartFilled
                     className={isLiked ? "country-card__like-icon" : ""}
