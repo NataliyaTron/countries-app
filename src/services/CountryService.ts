@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ICountry } from "../components/CountryCard/CountryCard";
 
 interface FetchAllCountriesDefinition {
@@ -9,15 +9,12 @@ interface FetchAllCountriesDefinition {
 export const countryAPI = createApi({
     reducerPath: "countryAPI",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://restcountries.com/v3.1/all",
+        baseUrl: "https://restcountries.com/v3.1",
     }),
     endpoints: (build) => ({
-        fetchAllCountries: build.query<FetchAllCountriesDefinition, number>({
-            query: (limit: number = 5) => ({
+        fetchAllCountries: build.query<any, undefined | void>({
+            query: () => ({
                 url: "/all",
-                params: {
-                    _limit: limit,
-                },
             }),
         }),
     }),

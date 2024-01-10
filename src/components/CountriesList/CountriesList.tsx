@@ -4,19 +4,27 @@ import CountryCard from "../CountryCard/CountryCard";
 import { useFetchAllCountriesQuery } from "../../services/CountryService";
 
 interface Country {
-    img: string;
-    title: string;
-    link: string;
+    flag: string;
+    name: string;
+    population: number;
+    area: number;
+    currencies: string;
+    capital: string;
 }
 
 const CountriesList = () => {
-    const { data: countries, error, isLoading } = useFetchAllCountriesQuery(5);
+    const {
+        data: countries = [],
+        error,
+        isLoading,
+    } = useFetchAllCountriesQuery();
+    console.log(countries.map((country: any) => country.name.common));
     if (isLoading) {
         return <div>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div>Error: {JSON.stringify(error, null, 2)}</div>;
     }
 
     return (
@@ -25,9 +33,12 @@ const CountriesList = () => {
                 {countries.map((country: Country, index: number) => (
                     <CountryCard
                         key={index}
-                        img={country.img}
-                        title={country.title}
-                        link={country.link}
+                        flag={country.flag}
+                        name={country.name}
+                        population={country.population}
+                        area={country.area}
+                        currencies={country.currencies}
+                        capital={country.capital}
                     />
                 ))}
             </div>

@@ -4,8 +4,6 @@ import App from "./App";
 import "./index.scss";
 import { store } from "./toolkitRedux/store";
 import { Provider } from "react-redux";
-import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
-import { countryAPI } from "./services/CountryService";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -13,9 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <ApiProvider api={countryAPI}>
-                <App />
-            </ApiProvider>
+            <App />
         </Provider>
     </React.StrictMode>
 );
